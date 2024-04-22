@@ -67,6 +67,7 @@ $(document).ready(function() {
     },
 
     locale: 'es',
+    timezone: 'local',
     defaultView: "month",
     navLinks: true, 
     editable: true,
@@ -80,11 +81,10 @@ $(document).ready(function() {
       $("input[name=fecha_inicio]").val(start.format('DD-MM-YYYY'));
       
       var horaInicio = start.format('HH:mm');
-
-      var valorFechaFin = end.format("DD-MM-YYYY");
-      var F_final = moment(valorFechaFin, "DD-MM-YYYY").subtract(1, 'days').format('DD-MM-YYYY'); //Le resto 1 dia
-      $('input[name=fecha_fin').val(F_final);  
+      var horaFin = end.format('HH:mm');
+  
       $("input[name=hora_inicio]").val(horaInicio);
+      $("input[name=hora_fin]").val(horaFin);
     },
       
     events: [
@@ -94,14 +94,10 @@ $(document).ready(function() {
           _id: '<?php echo $dataEvento['id']; ?>',
           title: '<?php echo $dataEvento['evento']; ?>',
           start: '<?php echo $dataEvento['fecha_inicio']; ?>',
-          hora_inicio: '<?php echo $dataEvento['hora_inicio']; ?>',
+          fecha_prox: '<?php echo $dataEvento['fecha_prox']; ?>',
           end:  '<?php echo $dataEvento['fecha_fin']; ?>',
-          pago: '<?php echo $dataEvento['pago']; ?>',
-          tratamiento: '<?php echo $dataEvento['tratamiento']; ?>',
-          observacion: '<?php echo $dataEvento['observacion']; ?>',
-          color: '<?php echo $dataEvento['color_evento']; ?>',
-          foto: '<?php echo $dataEvento['foto']; ?>'
-          },
+          color: '<?php echo $dataEvento['color_evento']; ?>'  
+        },
         <?php } ?>
     ],
 
@@ -111,9 +107,8 @@ eventRender: function(event, element) {
       .find(".fc-content")
       .prepend("<span id='btnCerrar'; class='closeon material-icons'>&#xe5cd;</span>");
     
-    // Agregar informacion debajo del título del evento
-    element.find(".fc-title").append("<br> Hora de cita: " + event.hora_inicio);
-    element.find(".fc-title").append("<br> Proxima fecha de pago: " + event.end.format('YYYY-MM-DD'));
+    // Agregar informacion al título del evento
+    element.find(".fc-title").append(" - Proxima fecha de pago: " + event.fecha_prox);
     
     //Eliminar evento
     element.find(".closeon").on("click", function() {

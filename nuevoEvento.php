@@ -1,24 +1,29 @@
 <?php
-//date_default_timezone_set("America/Bogota");
+
 setlocale(LC_ALL,"es_ES");
-//$hora = date("g:i:A");
 
 require("config.php");
 $evento            = ucwords($_REQUEST['evento']);
 $f_inicio          = $_REQUEST['fecha_inicio'];
 $fecha_inicio      = date('Y-m-d', strtotime($f_inicio)); 
 $hora_inicio       = ucwords($_REQUEST['hora_inicio']);
-
-$f_fin             = $_REQUEST['fecha_fin']; 
-$seteando_f_final  = date('Y-m-d', strtotime($f_fin));   
-
-$fecha_fin1        = strtotime($seteando_f_final."+ 1 days");
-$fecha_fin         = date('Y-m-d', ($fecha_fin1));
+$hora_fin       = ucwords($_REQUEST['hora_fin']);
+$fecha_prox = ucwords($_REQUEST['fecha_prox']);
+$fecha_pago = ucwords($_REQUEST['fecha_pago']);
 $pago              = ucwords($_REQUEST['pago']);
 $tratamiento       = ucwords($_REQUEST['tratamiento']);
 $observacion       = ucwords($_REQUEST['observacion']);  
 $color_evento      = $_REQUEST['color_evento'];
 
+//convertir fecha al formato que quiere fullcalendar
+$fecha_hora_str = $fecha_inicio . 'T' . $hora_inicio;
+
+$timestamp = $fecha_hora_str;
+
+//misma conversion de fecha para la cita
+$fecha_hora_str = $fecha_inicio . 'T' . $hora_fin;
+
+$timestamp2 = $fecha_hora_str;
 
 // Manejo de la imagen
 $nombreImagen = $_FILES['foto']['name'];
@@ -33,17 +38,15 @@ if (!is_dir($rutaUploads)) {
 
 // Mueve la imagen de la ruta temporal a la ruta de destino
 move_uploaded_file($rutaTemporal, $rutaDestino);
-// Guardar $nombreImagen en la base de datos junto con otros datos del evento
-// Haz la conexión a la base de datos y realiza la inserción
-// Ten en cuenta la seguridad al manejar datos de usuario para evitar inyección SQL
-// Escapa el nombre de la imagen para evitar inyección SQL
+
 $nombreImagenEscapado = mysqli_real_escape_string($con, $nombreImagen);
 
 
 $InsertNuevoEvento = "INSERT INTO eventoscalendar(
       evento,
       fecha_inicio,
-      hora_inicio,
+      fecha_prox,
+      fecha_pago,
       fecha_fin,
       pago,
       tratamiento,
@@ -53,9 +56,10 @@ $InsertNuevoEvento = "INSERT INTO eventoscalendar(
       )
     VALUES (
       '" .$evento. "',
-      '". $fecha_inicio."',
-      '". $hora_inicio."',
-      '" .$fecha_fin. "',
+      '". $timestamp."',
+      '". $fecha_prox."',
+      '". $fecha_pago."',
+      '" .$timestamp2. "',
       '" .$pago. "',
       '" .$tratamiento. "',
       '" .$observacion. "',

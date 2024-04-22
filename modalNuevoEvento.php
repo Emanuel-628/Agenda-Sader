@@ -15,21 +15,27 @@
 			</div>
 		</div>
     <div class="form-group">
-      <label for="fecha_inicio" class="col-sm-12 control-label">Fecha Inicio</label>
+      <label for="fecha_inicio" class="col-sm-12 control-label">Fecha de Hoy</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" name="fecha_inicio" id="fecha_inicio" placeholder="Fecha Inicio">
       </div>
     </div>
     <div class="form-group">
-      <label for="hora_inicio" class="col-sm-12 control-label">Hora Inicio</label>
+      <label for="fecha_prox" class="col-sm-12 control-label">Fecha de Proxima Cita</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control" name="fecha_prox" id="fecha_prox" placeholder="Fecha Final">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="hora_inicio" class="col-sm-12 control-label">Hora de Cita, desde:</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" name="hora_inicio" id="hora_inicio" >
       </div>
     </div>
     <div class="form-group">
-      <label for="fecha_fin" class="col-sm-12 control-label">Fecha Proxima</label>
+      <label for="hora_fin" class="col-sm-12 control-label">Hora de Cita, hasta: </label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" name="fecha_fin" id="fecha_fin" placeholder="Fecha Final">
+        <input type="text" class="form-control" name="hora_fin" id="hora_fin" >
       </div>
     </div>
     <div class="form-group">
@@ -38,6 +44,12 @@
 				<input type="text" class="form-control" name="pago" id="pago"/>
 			</div>
 		</div>
+    <div class="form-group">
+      <label for="fecha_pago" class="col-sm-12 control-label">Proxima Fecha de pago</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control" name="fecha_pago" id="fecha_pago">
+      </div>
+    </div>
     <div class="form-group">
 			<label for="evento" class="col-sm-12 control-label">Tratamiento</label>
 			<div class="col-sm-10">
@@ -52,7 +64,7 @@
 		</div>
 
     <div class = "form-group">
-      <label for = "Foto">Foto: </label>
+      <label for = "Foto">  Foto </label>
         <input type ="file" class="form-control" name="foto" id ="foto">
     </div>
 
@@ -88,15 +100,3 @@
     </div>
   </div>
 </div>
-
-<script>
-document.getElementById("formEvento").addEventListener("submit", function(event) {
-    var fechaInicio = new Date(document.getElementById("fecha_inicio").value);
-    var fechaFin = new Date(document.getElementById("fecha_fin").value);
-
-    if (fechaFin < fechaInicio) {
-        alert("La fecha de fin debe ser posterior o igual a la fecha de inicio.");
-        event.preventDefault(); // Evita que el formulario se envíe si la validación falla
-    }
-});
-</script>

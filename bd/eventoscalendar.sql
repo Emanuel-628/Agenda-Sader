@@ -36,18 +36,14 @@ CREATE TABLE `eventoscalendar` (
   `color_evento` varchar(20) DEFAULT NULL,
   `fecha_inicio` varchar(20) DEFAULT NULL,
   `fecha_fin` varchar(20) DEFAULT NULL,
-  `hora_inicio` varchar(20) DEFAULT NULL,
+  `fecha_prox` varchar(20) DEFAULT NULL,
+  `fecha_pago` varchar(20) DEFAULT NULL,  
   `foto` blob
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `eventoscalendar`
 --
-
-INSERT INTO `eventoscalendar` (`id`, `evento`, `pago`, `tratamiento`, `observacion`, `color_evento`, `fecha_inicio`, `fecha_fin`, `hora_inicio`,`foto`) VALUES
-(51, 'Mi Primera Prueba','M','M','M', 'teal', '2021-07-07', '2021-07-08','00:00',''),
-(52, 'Mi Segunda Prueba','M','M','M', 'amber', '2021-07-17', '2021-07-18','00:00',''),
-(53, 'Mi Tercera Prueba','M','M','M', 'orange', '2021-07-03', '2021-07-04','00:00','');
 
 --
 -- Índices para tablas volcadas
