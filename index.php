@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/home.css">
+
 </head>
 <body>
 
@@ -32,15 +33,35 @@ include('config.php');
 
 <div class="row">
   <div class="col-md-12 mb-3">
-  <h3 class="text-center" id="title">Calendario de Citas</h3>
+    <h3 class="text-center" id="title">Calendario de Citas</h3>
   </div>
-</div>
+  </div>
+
 </div>
 
 
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <button id="listarEventoss" class="btn btn-primary">Lista de Pacientes</button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener el botón por su ID
+    var boton = document.getElementById('listarEventoss');
+
+    // Agregar un evento de clic al botón
+    boton.addEventListener('click', function() {
+        // Redireccionar a la nueva página
+        window.location.href = 'mostrar_eventos.php';
+    });
+});
+</script>
 
 <div id="calendar"></div>
-
 
 <?php  
   include('modalNuevoEvento.php');
