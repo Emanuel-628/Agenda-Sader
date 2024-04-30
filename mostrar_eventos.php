@@ -15,10 +15,32 @@
 <!-- JavaScript de DataTables -->
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
+<style>
+    .titulo-lista-pacientes {
+        color: #d7dbd7;
+        font-weight: 800;
+        border-bottom: 3px solid rgb(240, 237, 236);
+        background: #2f6df4;
+        padding: 8px 30px;
+        text-align: center;
+    }
+</style>
+
 </head>
 <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a href="index.php" class="navbar-brand">Sader</a>
+        <ul class="navbar-nav">
+        <li class="nav-item"><a href="#" class="nav-link">Crear Paciente</a></li>
+        <li class="nav-item"><a href="mostrar_eventos.php" class="nav-link">Lista de Pacientes</a></li>
+        </ul>
+    </div>
+    </nav>
+
     <div class="container mt-3">
-        <h3 class="text-center">Lista de Pacientes</h3>
+        <h3 class="titulo-lista-pacientes">Lista de Pacientes</h3>
         <div id="listaEventos" class="mt-3">
             <?php
             
@@ -40,6 +62,8 @@
                 <th>Fecha Proxima de Pago</th>
                 <th>Tratamiento</th>
                 <th>Observacion</th>
+                <th>Pago</th>
+                <th>Asistencia</th>
                 </tr></thead>';
                 echo '<tbody>';
                 while($fila = mysqli_fetch_assoc($resultado)) {
@@ -50,6 +74,7 @@
                     echo '<td>' . $fila['fecha_pago'] . '</td>';
                     echo '<td>' . $fila['tratamiento'] . '</td>';
                     echo '<td>' . $fila['observacion'] . '</td>';
+                    echo '<td>' . ($fila['asistio'] == 'option1' ? 'No' : 'Si') . '</td>';
                     echo '</tr>';
                 }
                 echo '</tbody></table>';

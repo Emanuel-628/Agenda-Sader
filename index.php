@@ -13,6 +13,18 @@
 </head>
 <body>
 
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a href="index.php" class="navbar-brand">Sader</a>
+    <ul class="navbar-nav">
+      <li class="nav-item"><a href="#" class="nav-link">Crear Paciente</a></li>
+      <li class="nav-item"><a href="mostrar_eventos.php" class="nav-link">Lista de Pacientes</a></li>
+    </ul>
+  </div>
+</nav>
+
+
 <?php
 include('config.php');
 
@@ -39,6 +51,13 @@ include('config.php');
 
 </div>
 
+
+<!-- Suprimir el botón Lista de Pacientes -->
+<style>
+    #listarEventoss {
+        display: none; /* Oculta el botón */
+    }
+</style>
 
 <div class="container">
     <div class="row">

@@ -56,16 +56,33 @@
 				<input type="text" class="form-control" name="tratamiento" id="tratamiento"/>
 			</div>
 		</div>
+
+    <div class="form-group">
+			<label for="evento" class="col-sm-12 control-label">¿Asistio?</label>
+			<div class="col-sm-12">
+      <div class="form-check">
+      <label class="form-check-label" for="radio1">
+        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="No" checked style="display: inline">No
+      </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label" for="radio2">
+        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="Si" style="display: inline">Si
+      </label>
+    </div>
+
+		</div>
+
     <div class="form-group">
 			<label for="evento" class="col-sm-12 control-label">Observacion</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" name="observacion" id="observacion"/>
+				<textarea class="form-control" name="observacion" id="observacion"></textarea>
 			</div>
 		</div>
 
     <div class = "form-group">
-      <label for = "Foto">  Foto </label>
-        <input type ="file" class="form-control" name="foto" id ="foto">
+      <label for = "foto">  Foto </label>
+        <input type ="file" class="form-control-file" name="foto" id ="foto">
     </div>
 
 

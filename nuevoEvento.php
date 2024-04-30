@@ -7,13 +7,14 @@ $evento            = ucwords($_REQUEST['evento']);
 $f_inicio          = $_REQUEST['fecha_inicio'];
 $fecha_inicio      = date('Y-m-d', strtotime($f_inicio)); 
 $hora_inicio       = ucwords($_REQUEST['hora_inicio']);
-$hora_fin       = ucwords($_REQUEST['hora_fin']);
-$fecha_prox = ucwords($_REQUEST['fecha_prox']);
-$fecha_pago = ucwords($_REQUEST['fecha_pago']);
+$hora_fin          = ucwords($_REQUEST['hora_fin']);
+$fecha_prox        = ucwords($_REQUEST['fecha_prox']);
+$fecha_pago        = ucwords($_REQUEST['fecha_pago']);
 $pago              = ucwords($_REQUEST['pago']);
 $tratamiento       = ucwords($_REQUEST['tratamiento']);
 $observacion       = ucwords($_REQUEST['observacion']);  
 $color_evento      = $_REQUEST['color_evento'];
+$asistio           = $_REQUEST['optradio'];
 
 //convertir fecha al formato que quiere fullcalendar
 $fecha_hora_str = $fecha_inicio . 'T' . $hora_inicio;
@@ -52,6 +53,7 @@ $InsertNuevoEvento = "INSERT INTO eventoscalendar(
       tratamiento,
       observacion,
       color_evento,
+      asistio,
       foto
       )
     VALUES (
@@ -64,6 +66,7 @@ $InsertNuevoEvento = "INSERT INTO eventoscalendar(
       '" .$tratamiento. "',
       '" .$observacion. "',
       '" .$color_evento. "',
+      '" .$asistio. "',
       '" .$nombreImagenEscapado. "'
   )";
 $resultadoNuevoEvento = mysqli_query($con, $InsertNuevoEvento);

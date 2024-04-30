@@ -38,6 +38,7 @@ CREATE TABLE `eventoscalendar` (
   `fecha_fin` varchar(20) DEFAULT NULL,
   `fecha_prox` varchar(20) DEFAULT NULL,
   `fecha_pago` varchar(20) DEFAULT NULL,  
+  `asistio` varchar(20) DEFAULT NULL,  
   `foto` blob
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
