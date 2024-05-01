@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `eventoscalendar` (
   `id` int(11) NOT NULL,
   `evento` varchar(250) DEFAULT NULL,
+  `pacienteId` varchar(250) DEFAULT NULL,
   `pago` varchar(250) DEFAULT NULL,
   `tratamiento` varchar(250) DEFAULT NULL,
   `observacion` varchar(250) DEFAULT NULL,
@@ -41,6 +42,12 @@ CREATE TABLE `eventoscalendar` (
   `asistio` varchar(20) DEFAULT NULL,  
   `foto` blob
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE `Pacientes` (
+  `id` int(11) NOT NULL,
+  `pacienteId` varchar(250) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 
 --
 -- Volcado de datos para la tabla `eventoscalendar`
@@ -56,6 +63,8 @@ CREATE TABLE `eventoscalendar` (
 ALTER TABLE `eventoscalendar`
   ADD PRIMARY KEY (`id`);
 
+ALTER TABLE `Pacientes`
+  ADD PRIMARY KEY (`id`);
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
@@ -64,6 +73,10 @@ ALTER TABLE `eventoscalendar`
 -- AUTO_INCREMENT de la tabla `eventoscalendar`
 --
 ALTER TABLE `eventoscalendar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+COMMIT;
+
+ALTER TABLE `Pacientes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 COMMIT;
 

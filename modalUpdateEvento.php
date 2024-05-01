@@ -7,30 +7,36 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-  <form name="formEventoUpdate" id="formEventoUpdate" action="UpdateEvento.php" class="form-horizontal" method="POST">
+  <form name="formEventoUpdate" id="formEventoUpdate" action="UpdateEvento.php" class="form-horizontal" method="POST" enctype="multipart/form-data">
     <input type="hidden" class="form-control" name="idEvento" id="idEvento">
     <div class="form-group">
-      <label for="evento" class="col-sm-12 control-label">Nombre del Paciente</label>
+    <label for="evento" class="col-sm-12 control-label">Nombre del Paciente</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" name="evento" id="evento" />
       </div>
     </div>
     <div class="form-group">
-      <label for="fecha_inicio" class="col-sm-12 control-label">Fecha Inicio</label>
+      <label for="fecha_inicio" class="col-sm-12 control-label">Fecha de Hoy</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" name="fecha_inicio" id="fecha_inicio" placeholder="Fecha Inicio">
       </div>
     </div>
     <div class="form-group">
-      <label for="hora_inicio" class="col-sm-12 control-label">Hora Inicio</label>
+      <label for="fecha_prox" class="col-sm-12 control-label">Fecha de Proxima Cita</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control" name="fecha_prox" id="fecha_prox" placeholder="Fecha Final">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="hora_inicio" class="col-sm-12 control-label">Hora de Cita, desde:</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" name="hora_inicio" id="hora_inicio" >
       </div>
     </div>
     <div class="form-group">
-      <label for="fecha_fin" class="col-sm-12 control-label">Fecha Proxima</label>
+      <label for="hora_fin" class="col-sm-12 control-label">Hora de Cita, hasta: </label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" name="fecha_fin" id="fecha_fin" placeholder="Fecha Final">
+        <input type="text" class="form-control" name="hora_fin" id="hora_fin" >
       </div>
     </div>
     <div class="form-group">
@@ -40,19 +46,43 @@
 			</div>
 		</div>
     <div class="form-group">
+      <label for="fecha_pago" class="col-sm-12 control-label">Proxima Fecha de pago</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control" name="fecha_pago" id="fecha_pago">
+      </div>
+    </div>
+    <div class="form-group">
 			<label for="evento" class="col-sm-12 control-label">Tratamiento</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" name="tratamiento" id="tratamiento"/>
 			</div>
 		</div>
     <div class="form-group">
+			<label for="evento" class="col-sm-12 control-label">¿Asistio?</label>
+			<div class="col-sm-12">
+      <div class="form-check">
+      <label class="form-check-label" for="radio1">
+        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="No" checked style="display: inline">No
+      </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label" for="radio2">
+        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="Si" style="display: inline">Si
+      </label>
+    </div>
+		</div>
+
+    <div class="form-group">
 			<label for="evento" class="col-sm-12 control-label">Observacion</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" name="observacion" id="observacion"/>
+				<textarea class="form-control" name="observacion" id="observacion"></textarea>
 			</div>
 		</div>
 
-
+    <div class = "form-group">
+      <label for = "foto">  Foto </label>
+        <input type ="file" class="form-control-file" name="foto" id ="foto">
+    </div>
 
     <div class="col-md-12 activado">
  
@@ -78,7 +108,7 @@
 
     
      <div class="modal-footer">
-        <button type="submit" class="btn btn-success">Guardar Cambios de mi Evento</button>
+        <button type="submit" class="btn btn-success">Guardar Cambios</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
       </div>
   </form>

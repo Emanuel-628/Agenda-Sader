@@ -33,7 +33,7 @@
     <div class="container">
         <a href="index.php" class="navbar-brand">Sader</a>
         <ul class="navbar-nav">
-        <li class="nav-item"><a href="#" class="nav-link">Crear Paciente</a></li>
+        <li class="nav-item"><a href="crear_paciente.php" class="nav-link">Crear Paciente</a></li>
         <li class="nav-item"><a href="mostrar_eventos.php" class="nav-link">Lista de Pacientes</a></li>
         </ul>
     </div>
@@ -56,6 +56,7 @@
                 // Imprimir la tabla HTML
                 echo '<table id="tablaEventos" class="display" style="width:100%">';
                 echo '<thead><tr>
+                <th>Paciente ID</th>
                 <th>Foto</th>
                 <th>Paciente</th>
                 <th>Fecha Proxima de Cita</th>
@@ -68,12 +69,14 @@
                 echo '<tbody>';
                 while($fila = mysqli_fetch_assoc($resultado)) {
                     echo '<tr>';
+                    echo '<td>' . $fila['pacienteId'] . '</td>';
                     echo '<td><img src="/agenda/uploads/' . $fila['foto'] . '" alt="Foto Paciente" width="100"></td>';
                     echo '<td>' . $fila['evento'] . '</td>';
                     echo '<td>' . $fila['fecha_prox'] . '</td>';
                     echo '<td>' . $fila['fecha_pago'] . '</td>';
                     echo '<td>' . $fila['tratamiento'] . '</td>';
                     echo '<td>' . $fila['observacion'] . '</td>';
+                    echo '<td>' . $fila['pago'] . '</td>';
                     echo '<td>' . ($fila['asistio'] == 'option1' ? 'No' : 'Si') . '</td>';
                     echo '</tr>';
                 }

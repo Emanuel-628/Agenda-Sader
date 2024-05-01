@@ -18,7 +18,7 @@
   <div class="container">
     <a href="index.php" class="navbar-brand">Sader</a>
     <ul class="navbar-nav">
-      <li class="nav-item"><a href="#" class="nav-link">Crear Paciente</a></li>
+      <li class="nav-item"><a href="crear_paciente.php" class="nav-link">Crear Paciente</a></li>
       <li class="nav-item"><a href="mostrar_eventos.php" class="nav-link">Lista de Pacientes</a></li>
     </ul>
   </div>
@@ -86,8 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
   include('modalNuevoEvento.php');
   include('modalUpdateEvento.php');
 ?>
-
-
 
 <script src ="js/jquery-3.0.0.min.js"> </script>
 <script src="js/popper.min.js"></script>
@@ -196,15 +194,24 @@ eventDrop: function (event, delta) {
 //Modificar Evento del Calendario 
 eventClick:function(event){
     var idEvento = event._id;
-    $('input[name=idEvento').val(idEvento);
+    console.log("Se hizo clic en el evento:", event.title);
+    /*$('input[name=idEvento').val(idEvento);
     $('input[name=evento').val(event.title);
-    $('input[name=fecha_inicio').val(event.start.format('DD-MM-YYYY'));
-    $('input[name=hora_inicio').val(event.hora_inicio);
-    $('input[name=fecha_fin').val(event.end.format("DD-MM-YYYY"));
+    $('input[name=fecha_inicio').val(event.timestamp);
+    $('input[name=fecha_prox').val(event.fecha_prox);
+    $('input[name=fecha_pago').val(event.fecha_pago);
+    $('input[name=fecha_fin').val(event.timestamp2);
     $('input[name=pago').val(event.pago);
     $('input[name=tratamiento').val(event.tratamiento);
     $('input[name=observacion').val(event.observacion);
-
+    $('input[name=asistio').val(event.asistio);
+    $('input[name=foto').val(event.nombreImagenEscapado);
+    */
+    $('input[name=idEvento').val(idEvento);
+    $('input[name=evento').val(event.title);
+    //$('input[name=fecha_inicio').val(event.start.format('DD-MM-YYYY'));
+    //$('input[name=fecha_fin').val(event.end.format("DD-MM-YYYY"));
+    //$("#modalPrueba").modal();
     $("#modalUpdateEvento").modal();
   },
 

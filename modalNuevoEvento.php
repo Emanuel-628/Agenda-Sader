@@ -56,7 +56,6 @@
 				<input type="text" class="form-control" name="tratamiento" id="tratamiento"/>
 			</div>
 		</div>
-
     <div class="form-group">
 			<label for="evento" class="col-sm-12 control-label">¿Asistio?</label>
 			<div class="col-sm-12">
@@ -70,7 +69,6 @@
         <input type="radio" class="form-check-input" id="radio2" name="optradio" value="Si" style="display: inline">Si
       </label>
     </div>
-
 		</div>
 
     <div class="form-group">
