@@ -65,11 +65,13 @@
             LEFT JOIN Pacientes AS p ON e.pacienteId = p.id";
             $result = mysqli_query($con, $query);
 
+            $contador = 1;
             // Verificar si se encontraron resultados
             if(mysqli_num_rows($result) > 0) {
                 // Imprimir la tabla HTML
                 echo '<table id="tablaEventos" class="table table-striped table-bordered" style="width:100%">';
                 echo '<thead><tr>
+                <th>N°</th>
                 <th>Foto</th>
                 <th>Paciente</th>
                 <th>Fecha Proxima de Cita</th>
@@ -82,6 +84,7 @@
                 echo '<tbody>';
                 while ($row = mysqli_fetch_assoc($result)) {   
                     echo '<tr>';
+                    echo '<td>' . $contador . '</td>';
                     echo '<td><img src="/agenda/uploads/' . $row['foto'] . '" alt="Foto Paciente" width="100"></td>';
                     echo '<td>' . $row['paciente'] . '</td>';
                     echo '<td>' . $row['fecha_prox'] . '</td>';
@@ -91,6 +94,7 @@
                     echo '<td>' . $row['pago'] . '</td>';
                     echo '<td>' . ($row['asistio'] == 'No' ? 'No' : 'Si') . '</td>';
                     echo '</tr>';
+                    $contador++;
                 }
 
                 echo '</tbody></table>';
