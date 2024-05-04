@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historial de Pacientes</title>
+    <title>Lista de Pacientes</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
 <!-- CSS de DataTables -->
@@ -38,7 +38,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
         <a href="index.php" class="navbar-brand">Sader</a>
         <ul class="navbar-nav">
@@ -49,9 +49,8 @@
     </div>
     </nav>
 
-
     <div class="container mt-3">
-        <h3 class="titulo-lista-pacientes">Historial de Pacientes</h3>
+        <h3 class="titulo-lista-pacientes">Lista de Pacientes</h3>
         <div id="listaEventos" class="mt-3">
             <?php
             
@@ -63,45 +62,34 @@
             //$resultado = mysqli_query($con, $sql);
             
 
-            $query = "SELECT e.*, p.paciente, p.foto FROM eventoscalendar AS e
-            LEFT JOIN Pacientes AS p ON e.pacienteId = p.id";
+            $query = "SELECT * FROM Pacientes";
             $result = mysqli_query($con, $query);
 
             $contador = 1;
             // Verificar si se encontraron resultados
             if(mysqli_num_rows($result) > 0) {
                 // Imprimir la tabla HTML
-                echo '<table id="tablaEventos" class="table table-striped table-bordered" style="width:100%">';
+                echo '<table id="tablaPacientes" class="table table-striped table-bordered" style="width:100%">';
                 echo '<thead><tr>
                 <th>N°</th>
                 <th>Foto</th>
                 <th>Paciente</th>
-                <th>Fecha Proxima de Cita</th>
-                <th>Fecha Proxima de Pago</th>
-                <th>Tratamiento</th>
-                <th>Observacion</th>
-                <th>Pago</th>
-                <th>Asistencia</th>
+                <th>Acciones</th>
                 </tr></thead>';
                 echo '<tbody>';
                 while ($row = mysqli_fetch_assoc($result)) {   
                     echo '<tr>';
                     echo '<td>' . $contador . '</td>';
-                    echo '<td><img src="/agenda/uploads/' . $row['foto'] . '" alt="Foto Paciente" width="100"></td>';
-                    echo '<td>' . $row['paciente'] . '</td>';
-                    echo '<td>' . $row['fecha_prox'] . '</td>';
-                    echo '<td>' . $row['fecha_pago'] . '</td>';
-                    echo '<td>' . $row['tratamiento'] . '</td>';
-                    echo '<td>' . $row['observacion'] . '</td>';
-                    echo '<td>' . $row['pago'] . '</td>';
-                    echo '<td>' . ($row['asistio'] == 'No' ? 'No' : 'Si') . '</td>';
+                    echo '<td style="text-align: center;"><img src="/agenda/uploads/' . $row['foto'] . '" alt="Foto Paciente" width="100"></td>';
+                    echo '<td style="text-align: center;">' . $row['paciente'] . '</td>';
+                    echo '<td><button type="button" class="btn btn-danger" onclick="eliminarPaciente(' . $row['id'] . ')">Eliminar</button></td>'; // Botón de eliminar
                     echo '</tr>';
                     $contador++;
                 }
 
                 echo '</tbody></table>';
             } else {
-                echo "No se encontraron eventos en la base de datos.";
+                echo "No se encontraron pacientes en la base de datos.";
             }
             
             // Cerrar la conexión a la base de datos
@@ -120,8 +108,18 @@ $(document).ready(function() {
             "url": "//cdn.datatables.net/plug-ins/1.11.5/i18n/Spanish.json" // Utiliza el archivo de idioma español
         }
     });*/
-    new DataTable('#tablaEventos');
+    new DataTable('#tablaPacientes');
 
 });
 </script>
 
+<script>
+    function eliminarPaciente(id) {
+        var confirmar = confirm("¿Estás seguro de que deseas eliminar este paciente?");
+        if (confirmar) {
+            // Enviar una solicitud al servidor para eliminar el paciente con el ID correspondiente
+            // Aquí puedes usar AJAX o simplemente redirigir a una página de PHP que maneje la eliminación
+            window.location.href = "eliminarPaciente.php?id=" + id;
+        }
+    }
+</script>

@@ -14,14 +14,16 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container">
-    <a href="index.php" class="navbar-brand">Sader</a>
-    <ul class="navbar-nav">
-      <li class="nav-item"><a href="crear_paciente.php" class="nav-link">Crear Paciente</a></li>
-      <li class="nav-item"><a href="mostrar_eventos.php" class="nav-link">Lista de Pacientes</a></li>
+    <div class="container">
+        <a href="index.php" class="navbar-brand">Sader</a>
+        <ul class="navbar-nav">
+        <li class="nav-item"><a href="mostrar_eventos.php" class="nav-link">Historial de Pacientes</a></li>
+        <li class="nav-item"><a href="crear_paciente.php" class="nav-link">Crear Paciente</a></li>
+        <li class="nav-item"><a href="mostrarPacientes.php" class="nav-link">Lista de Pacientes</a></li>    
     </ul>
-  </div>
-</nav>
+    </div>
+    </nav>
+
 
 
 <?php
@@ -194,6 +196,7 @@ eventDrop: function (event, delta) {
 eventClick:function(event){
     var idEvento = event._id;
     console.log("Se hizo clic en el evento:", event.title);
+    console.log("Se hizo clic en:", idEvento);    
     /*$('input[name=idEvento').val(idEvento);
     $('input[name=evento').val(event.title);
     $('input[name=fecha_inicio').val(event.timestamp);
@@ -206,8 +209,6 @@ eventClick:function(event){
     $('input[name=asistio').val(event.asistio);
     $('input[name=foto').val(event.nombreImagenEscapado);
     */
-    $('input[name=idEvento').val(idEvento);
-    $('input[name=evento').val(event.title);
     //$('input[name=fecha_inicio').val(event.start.format('DD-MM-YYYY'));
     //$('input[name=fecha_fin').val(event.end.format("DD-MM-YYYY"));
     //$("#modalPrueba").modal();

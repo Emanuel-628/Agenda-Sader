@@ -19,15 +19,17 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
         <a href="index.php" class="navbar-brand">Sader</a>
         <ul class="navbar-nav">
+        <li class="nav-item"><a href="mostrar_eventos.php" class="nav-link">Historial de Pacientes</a></li>
         <li class="nav-item"><a href="crear_paciente.php" class="nav-link">Crear Paciente</a></li>
-        <li class="nav-item"><a href="mostrar_eventos.php" class="nav-link">Lista de Pacientes</a></li>
-        </ul>
+        <li class="nav-item"><a href="mostrarPacientes.php" class="nav-link">Lista de Pacientes</a></li>    
+    </ul>
     </div>
     </nav>
+
 
 <div class="container mt-3">
   <div class="row">

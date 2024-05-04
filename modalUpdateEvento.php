@@ -7,14 +7,25 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-  <form name="formEventoUpdate" id="formEventoUpdate" action="UpdateEvento.php" class="form-horizontal" method="POST" enctype="multipart/form-data">
+  <form name="formEventoUpdate" id="formEventoUpdate" action="UpdateEvento.php" class="form-horizontal" method="POST">
     <input type="hidden" class="form-control" name="idEvento" id="idEvento">
     <div class="form-group">
-    <label for="evento" class="col-sm-12 control-label">Nombre del Paciente</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" name="evento" id="evento" />
+			<label for="pacienteId" class="col-sm-12 control-label">Nombre del Paciente</label>
+			<div class="col-sm-10">			
+        <select class="form-control" id="pacienteId" name="pacienteId">
+        <?php
+              // Consulta para obtener los pacientes
+              $query = "SELECT id, paciente FROM Pacientes";
+              $result = mysqli_query($con, $query);
+
+              // Crear opciones para la lista desplegable
+              while ($row = mysqli_fetch_assoc($result)) {
+                  echo "<option value='" . $row['id'] . "'>" . $row['paciente'] . "</option>";
+              }
+              ?>
+          </select>
       </div>
-    </div>
+		</div>
     <div class="form-group">
       <label for="fecha_inicio" class="col-sm-12 control-label">Fecha de Hoy</label>
       <div class="col-sm-10">
@@ -79,11 +90,6 @@
 			</div>
 		</div>
 
-    <div class = "form-group">
-      <label for = "foto">  Foto </label>
-        <input type ="file" class="form-control-file" name="foto" id ="foto">
-    </div>
-
     <div class="col-md-12 activado">
  
       <input type="radio" name="color_evento" id="orangeUpd" value="#FF5722" checked>
@@ -105,7 +111,6 @@
       <label for="indigoUpd" class="circu" style="background-color: #9c27b0;"> </label>
 
     </div>
-
     
      <div class="modal-footer">
         <button type="submit" class="btn btn-success">Guardar Cambios</button>
