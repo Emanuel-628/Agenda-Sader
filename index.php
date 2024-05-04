@@ -4,11 +4,15 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Agenda Sader</title>
-	<link rel="stylesheet" type="text/css" href="css/fullcalendar.min.css">
+	
+  <link rel="stylesheet" type="text/css" href="css/fullcalendar.min.css">
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/home.css">
+
+  <link rel="icon" type="image/jpg" href="/agenda/sader.jpg">
+
 </head>
 <body>
 

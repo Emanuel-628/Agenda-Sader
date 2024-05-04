@@ -6,6 +6,8 @@
     <title>Lista de Pacientes</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
+    <link rel="icon" type="image/jpg" href="/agenda/sader.jpg">
+
 <!-- CSS de DataTables -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 

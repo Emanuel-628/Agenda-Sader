@@ -6,6 +6,9 @@
     <title>Crear Pacientes</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
+    <link rel="icon" type="image/jpg" href="/agenda/sader.jpg">
+
+
     <style>
     .custom-heading {
         color: #d7dbd7;
