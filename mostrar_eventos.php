@@ -9,11 +9,19 @@
 <!-- CSS de DataTables -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.5/css/dataTables.bootstrap4.css">
+
 <!-- JavaScript de jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <!-- JavaScript de DataTables -->
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap4.js"></script>
 
 <style>
     .titulo-lista-pacientes {
@@ -48,13 +56,18 @@
             include('config.php');
 
             // Consultar todos los eventos en la base de datos
-            $sql = "SELECT * FROM eventoscalendar";
-            $resultado = mysqli_query($con, $sql);
+            //$sql = "SELECT * FROM eventoscalendar";
+            //$resultado = mysqli_query($con, $sql);
             
+
+            $query = "SELECT e.*, p.pacienteId FROM eventoscalendar AS e
+            LEFT JOIN Pacientes AS p ON e.pacienteId = p.id";
+            $result = mysqli_query($con, $query);
+
             // Verificar si se encontraron resultados
-            if(mysqli_num_rows($resultado) > 0) {
+            if(mysqli_num_rows($result) > 0) {
                 // Imprimir la tabla HTML
-                echo '<table id="tablaEventos" class="display" style="width:100%">';
+                echo '<table id="tablaEventos" class="table table-striped table-bordered" style="width:100%">';
                 echo '<thead><tr>
                 <th>Paciente ID</th>
                 <th>Foto</th>
@@ -67,8 +80,9 @@
                 <th>Asistencia</th>
                 </tr></thead>';
                 echo '<tbody>';
-                while($fila = mysqli_fetch_assoc($resultado)) {
-                    echo '<tr>';
+                //while($fila = mysqli_fetch_assoc($resultado)) {
+                while ($row = mysqli_fetch_assoc($result)) {   
+                    /*echo '<tr>';
                     echo '<td>' . $fila['pacienteId'] . '</td>';
                     echo '<td><img src="/agenda/uploads/' . $fila['foto'] . '" alt="Foto Paciente" width="100"></td>';
                     echo '<td>' . $fila['evento'] . '</td>';
@@ -78,6 +92,18 @@
                     echo '<td>' . $fila['observacion'] . '</td>';
                     echo '<td>' . $fila['pago'] . '</td>';
                     echo '<td>' . ($fila['asistio'] == 'option1' ? 'No' : 'Si') . '</td>';
+                    echo '</tr>';*/
+
+                    echo '<tr>';
+                    echo '<td>' . $row['pacienteId'] . '</td>';
+                    echo '<td><img src="/agenda/uploads/' . $row['foto'] . '" alt="Foto Paciente" width="100"></td>';
+                    echo '<td>' . $row['evento'] . '</td>';
+                    echo '<td>' . $row['fecha_prox'] . '</td>';
+                    echo '<td>' . $row['fecha_pago'] . '</td>';
+                    echo '<td>' . $row['tratamiento'] . '</td>';
+                    echo '<td>' . $row['observacion'] . '</td>';
+                    echo '<td>' . $row['pago'] . '</td>';
+                    echo '<td>' . ($row['asistio'] == 'No' ? 'No' : 'Si') . '</td>';
                     echo '</tr>';
                 }
                 echo '</tbody></table>';
@@ -95,6 +121,12 @@
 
 <script>
 $(document).ready(function() {
-    $('#tablaEventos').DataTable();
+    /*$('#tablaEventos').DataTable({
+        "pagingType": "full_numbers", // Agrega paginación completa
+        "language": { // Personaliza el idioma de DataTable
+            "url": "//cdn.datatables.net/plug-ins/1.11.5/i18n/Spanish.json" // Utiliza el archivo de idioma español
+        }
+    });*/
+    new DataTable('#tablaEventos');
 });
 </script>

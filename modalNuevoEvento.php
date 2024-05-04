@@ -7,8 +7,26 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-  <form name="formEvento" id="formEvento" action="nuevoEvento.php" class="form-horizontal" method="POST" enctype="multipart/form-data">
-		<div class="form-group">
+  <form name="formEvento" id="formEvento" action="nuevoEvento.php" class="form-horizontal" method="POST" enctype="multipart/form-data">	
+   <div class="form-group">
+			<label for="pacienteId" class="col-sm-12 control-label">Paciente Id</label>
+			<div class="col-sm-10">			
+        <select class="form-control" id="pacienteId" name="pacienteId">
+        <?php
+              // Consulta para obtener los pacientes
+              $query = "SELECT id, pacienteId FROM Pacientes";
+              $result = mysqli_query($con, $query);
+
+              // Crear opciones para la lista desplegable
+              while ($row = mysqli_fetch_assoc($result)) {
+                  echo "<option value='" . $row['id'] . "'>" . $row['pacienteId'] . "</option>";
+              }
+              ?>
+          </select>
+      </div>
+		</div>
+  
+    <div class="form-group">
 			<label for="evento" class="col-sm-12 control-label">Nombre del Paciente</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" name="evento" id="evento" />
@@ -115,3 +133,4 @@
     </div>
   </div>
 </div>
+

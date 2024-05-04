@@ -15,6 +15,8 @@ $tratamiento       = ucwords($_REQUEST['tratamiento']);
 $observacion       = ucwords($_REQUEST['observacion']);  
 $color_evento      = $_REQUEST['color_evento'];
 $asistio           = $_REQUEST['optradio'];
+$pacienteId        = $_REQUEST['pacienteId'];
+
 
 //convertir fecha al formato que quiere fullcalendar
 $fecha_hora_str = $fecha_inicio . 'T' . $hora_inicio;
@@ -42,9 +44,9 @@ move_uploaded_file($rutaTemporal, $rutaDestino);
 
 $nombreImagenEscapado = mysqli_real_escape_string($con, $nombreImagen);
 
-
 $InsertNuevoEvento = "INSERT INTO eventoscalendar(
       evento,
+      pacienteId,
       fecha_inicio,
       fecha_prox,
       fecha_pago,
@@ -58,6 +60,7 @@ $InsertNuevoEvento = "INSERT INTO eventoscalendar(
       )
     VALUES (
       '" .$evento. "',
+      '" .$pacienteId. "',
       '". $timestamp."',
       '". $fecha_prox."',
       '". $fecha_pago."',
