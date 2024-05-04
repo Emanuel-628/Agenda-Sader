@@ -2,7 +2,7 @@
 
 require("config.php");
 
-$nombre_paciente = ucwords($_REQUEST['pacienteId']);
+$nombre_paciente = ucwords($_REQUEST['paciente']);
 
 // Manejo de la imagen
 $nombreImagen = $_FILES['foto']['name'];
@@ -20,7 +20,7 @@ move_uploaded_file($rutaTemporal, $rutaDestino);
 
 $nombreImagenEscapado = mysqli_real_escape_string($con, $nombreImagen);
 
-$sql = "INSERT INTO Pacientes (pacienteId,foto) VALUES ('" .$nombre_paciente. "','" .$nombreImagenEscapado. "')";
+$sql = "INSERT INTO Pacientes (paciente,foto) VALUES ('" .$nombre_paciente. "','" .$nombreImagenEscapado. "')";
 
 $resultadoNuevoEvento = mysqli_query($con, $sql);
 

@@ -61,7 +61,7 @@
             //$resultado = mysqli_query($con, $sql);
             
 
-            $query = "SELECT e.*, p.pacienteId, p.foto FROM eventoscalendar AS e
+            $query = "SELECT e.*, p.paciente, p.foto FROM eventoscalendar AS e
             LEFT JOIN Pacientes AS p ON e.pacienteId = p.id";
             $result = mysqli_query($con, $query);
 
@@ -83,7 +83,7 @@
                 while ($row = mysqli_fetch_assoc($result)) {   
                     echo '<tr>';
                     echo '<td><img src="/agenda/uploads/' . $row['foto'] . '" alt="Foto Paciente" width="100"></td>';
-                    echo '<td>' . $row['pacienteId'] . '</td>';
+                    echo '<td>' . $row['paciente'] . '</td>';
                     echo '<td>' . $row['fecha_prox'] . '</td>';
                     echo '<td>' . $row['fecha_pago'] . '</td>';
                     echo '<td>' . $row['tratamiento'] . '</td>';

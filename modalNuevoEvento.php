@@ -9,28 +9,21 @@
       </div>
   <form name="formEvento" id="formEvento" action="nuevoEvento.php" class="form-horizontal" method="POST">	
    <div class="form-group">
-			<label for="pacienteId" class="col-sm-12 control-label">Paciente Id</label>
+			<label for="pacienteId" class="col-sm-12 control-label">Nombre del Paciente</label>
 			<div class="col-sm-10">			
         <select class="form-control" id="pacienteId" name="pacienteId">
         <?php
               // Consulta para obtener los pacientes
-              $query = "SELECT id, pacienteId FROM Pacientes";
+              $query = "SELECT id, paciente FROM Pacientes";
               $result = mysqli_query($con, $query);
 
               // Crear opciones para la lista desplegable
               while ($row = mysqli_fetch_assoc($result)) {
-                  echo "<option value='" . $row['id'] . "'>" . $row['pacienteId'] . "</option>";
+                  echo "<option value='" . $row['id'] . "'>" . $row['paciente'] . "</option>";
               }
               ?>
           </select>
       </div>
-		</div>
-  
-    <div class="form-group">
-			<label for="evento" class="col-sm-12 control-label">Nombre del Paciente</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" name="evento" id="evento" />
-			</div>
 		</div>
     <div class="form-group">
       <label for="fecha_inicio" class="col-sm-12 control-label">Fecha de Hoy</label>
@@ -127,4 +120,3 @@
     </div>
   </div>
 </div>
-

@@ -35,8 +35,8 @@
       <h3 class="text-center mb-4 custom-heading">Crear Paciente</h3>
       <form action="guardarPaciente.php" method="post" enctype="multipart/form-data">
         <div class="mb-3">
-          <label for="pacienteId" class="form-label">Nombre del Paciente</label>
-          <input type="text" class="form-control" id="pacienteId" name="pacienteId">
+          <label for="paciente" class="form-label">Nombre del Paciente</label>
+          <input type="text" class="form-control" id="paciente" name="paciente">
         </div>
         <div class = "mb-3">
           <label for = "foto">  Foto </label>

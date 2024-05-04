@@ -3,7 +3,6 @@
 setlocale(LC_ALL,"es_ES");
 
 require("config.php");
-$evento            = ucwords($_REQUEST['evento']);
 $f_inicio          = $_REQUEST['fecha_inicio'];
 $fecha_inicio      = date('Y-m-d', strtotime($f_inicio)); 
 $hora_inicio       = ucwords($_REQUEST['hora_inicio']);
@@ -16,6 +15,13 @@ $observacion       = ucwords($_REQUEST['observacion']);
 $color_evento      = $_REQUEST['color_evento'];
 $asistio           = $_REQUEST['optradio'];
 $pacienteId        = $_REQUEST['pacienteId'];
+
+
+// Obtener el pacienteId de la tabla Pacientes
+$query = "SELECT paciente FROM Pacientes WHERE id = $pacienteId";
+$result = mysqli_query($con, $query);
+$row = mysqli_fetch_assoc($result);
+$evento = $row['paciente'];
 
 
 //convertir fecha al formato que quiere fullcalendar
@@ -53,7 +59,18 @@ $InsertNuevoEvento = "INSERT INTO eventoscalendar(
       '" .$observacion. "',
       '" .$color_evento. "',
       '" .$asistio. "'
-  )";
+  )
+  ON DUPLICATE KEY UPDATE 
+      evento = VALUES(evento),
+      fecha_inicio = VALUES(fecha_inicio),
+      fecha_prox = VALUES(fecha_prox),
+      fecha_pago = VALUES(fecha_pago),
+      fecha_fin = VALUES(fecha_fin),
+      pago = VALUES(pago),
+      tratamiento = VALUES(tratamiento),
+      observacion = VALUES(observacion),
+      color_evento = VALUES(color_evento),
+      asistio = VALUES(asistio)";
 $resultadoNuevoEvento = mysqli_query($con, $InsertNuevoEvento);
 
 header("Location:index.php?e=1");

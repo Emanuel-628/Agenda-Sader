@@ -1,11 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.0.2
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 14-07-2021 a las 21:30:11
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -21,16 +13,10 @@ SET time_zone = "+00:00";
 -- Base de datos: `sader`
 --
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `eventoscalendar`
---
-
 CREATE TABLE `eventoscalendar` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `evento` varchar(250) DEFAULT NULL,
-  `pacienteId` varchar(250) DEFAULT NULL,
+  `pacienteId` int DEFAULT NULL,
   `pago` varchar(250) DEFAULT NULL,
   `tratamiento` varchar(250) DEFAULT NULL,
   `observacion` varchar(250) DEFAULT NULL,
@@ -39,47 +25,21 @@ CREATE TABLE `eventoscalendar` (
   `fecha_fin` varchar(20) DEFAULT NULL,
   `fecha_prox` varchar(20) DEFAULT NULL,
   `fecha_pago` varchar(20) DEFAULT NULL,  
-  `asistio` varchar(20) DEFAULT NULL
+  `asistio` varchar(20) DEFAULT NULL,
+   PRIMARY KEY (`id`),
+   FOREIGN KEY (pacienteId) REFERENCES Pacientes(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE `Pacientes` (
-  `id` int(11) NOT NULL,
-  `pacienteId` varchar(250) DEFAULT NULL,
-  `foto` blob
+  `id` int NOT NULL AUTO_INCREMENT,
+  `paciente` varchar(250) DEFAULT NULL,
+  `foto` blob,
+   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-
---
--- Volcado de datos para la tabla `eventoscalendar`
---
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `eventoscalendar`
---
 ALTER TABLE `eventoscalendar`
-  ADD PRIMARY KEY (`id`);
+  ADD UNIQUE KEY `unique_paciente` (`pacienteId`);
 
-ALTER TABLE `Pacientes`
-  ADD PRIMARY KEY (`id`);
---
--- AUTO_INCREMENT de las tablas volcadas
---
 
---
--- AUTO_INCREMENT de la tabla `eventoscalendar`
---
-ALTER TABLE `eventoscalendar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
 COMMIT;
-
-ALTER TABLE `Pacientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
