@@ -28,22 +28,6 @@ $fecha_hora_str = $fecha_inicio . 'T' . $hora_fin;
 
 $timestamp2 = $fecha_hora_str;
 
-// Manejo de la imagen
-$nombreImagen = $_FILES['foto']['name'];
-$rutaTemporal = $_FILES['foto']['tmp_name'];
-$rutaUploads = $_SERVER['DOCUMENT_ROOT'] . '/agenda/uploads';
-$rutaDestino = $rutaUploads . '/' . $nombreImagen;
-
-// Verifica si la carpeta uploads existe, si no, la crea
-if (!is_dir($rutaUploads)) {
-    mkdir($rutaUploads, 0777, true);
-}
-
-// Mueve la imagen de la ruta temporal a la ruta de destino
-move_uploaded_file($rutaTemporal, $rutaDestino);
-
-$nombreImagenEscapado = mysqli_real_escape_string($con, $nombreImagen);
-
 $InsertNuevoEvento = "INSERT INTO eventoscalendar(
       evento,
       pacienteId,
@@ -55,8 +39,7 @@ $InsertNuevoEvento = "INSERT INTO eventoscalendar(
       tratamiento,
       observacion,
       color_evento,
-      asistio,
-      foto
+      asistio
       )
     VALUES (
       '" .$evento. "',
@@ -69,8 +52,7 @@ $InsertNuevoEvento = "INSERT INTO eventoscalendar(
       '" .$tratamiento. "',
       '" .$observacion. "',
       '" .$color_evento. "',
-      '" .$asistio. "',
-      '" .$nombreImagenEscapado. "'
+      '" .$asistio. "'
   )";
 $resultadoNuevoEvento = mysqli_query($con, $InsertNuevoEvento);
 

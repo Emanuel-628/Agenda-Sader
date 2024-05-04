@@ -32,11 +32,15 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-md-6 mx-auto">
-      <h3 class="text-center mb-4 custom-heading">Crear Paciente</h2>
-      <form action="guardarPaciente.php" method="post">
+      <h3 class="text-center mb-4 custom-heading">Crear Paciente</h3>
+      <form action="guardarPaciente.php" method="post" enctype="multipart/form-data">
         <div class="mb-3">
           <label for="pacienteId" class="form-label">Nombre del Paciente</label>
           <input type="text" class="form-control" id="pacienteId" name="pacienteId">
+        </div>
+        <div class = "mb-3">
+          <label for = "foto">  Foto </label>
+          <input type ="file" class="form-control-file" name="foto" id ="foto">
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
       </form>

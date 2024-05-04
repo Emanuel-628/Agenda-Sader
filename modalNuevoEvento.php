@@ -7,7 +7,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-  <form name="formEvento" id="formEvento" action="nuevoEvento.php" class="form-horizontal" method="POST" enctype="multipart/form-data">	
+  <form name="formEvento" id="formEvento" action="nuevoEvento.php" class="form-horizontal" method="POST">	
    <div class="form-group">
 			<label for="pacienteId" class="col-sm-12 control-label">Paciente Id</label>
 			<div class="col-sm-10">			
@@ -95,12 +95,6 @@
 				<textarea class="form-control" name="observacion" id="observacion"></textarea>
 			</div>
 		</div>
-
-    <div class = "form-group">
-      <label for = "foto">  Foto </label>
-        <input type ="file" class="form-control-file" name="foto" id ="foto">
-    </div>
-
 
   <div class="col-md-12" id="grupoRadio">
   

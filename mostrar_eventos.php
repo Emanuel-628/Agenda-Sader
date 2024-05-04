@@ -32,6 +32,7 @@
         padding: 8px 30px;
         text-align: center;
     }
+
 </style>
 
 </head>
@@ -60,7 +61,7 @@
             //$resultado = mysqli_query($con, $sql);
             
 
-            $query = "SELECT e.*, p.pacienteId FROM eventoscalendar AS e
+            $query = "SELECT e.*, p.pacienteId, p.foto FROM eventoscalendar AS e
             LEFT JOIN Pacientes AS p ON e.pacienteId = p.id";
             $result = mysqli_query($con, $query);
 
@@ -69,7 +70,6 @@
                 // Imprimir la tabla HTML
                 echo '<table id="tablaEventos" class="table table-striped table-bordered" style="width:100%">';
                 echo '<thead><tr>
-                <th>Paciente ID</th>
                 <th>Foto</th>
                 <th>Paciente</th>
                 <th>Fecha Proxima de Cita</th>
@@ -80,24 +80,10 @@
                 <th>Asistencia</th>
                 </tr></thead>';
                 echo '<tbody>';
-                //while($fila = mysqli_fetch_assoc($resultado)) {
                 while ($row = mysqli_fetch_assoc($result)) {   
-                    /*echo '<tr>';
-                    echo '<td>' . $fila['pacienteId'] . '</td>';
-                    echo '<td><img src="/agenda/uploads/' . $fila['foto'] . '" alt="Foto Paciente" width="100"></td>';
-                    echo '<td>' . $fila['evento'] . '</td>';
-                    echo '<td>' . $fila['fecha_prox'] . '</td>';
-                    echo '<td>' . $fila['fecha_pago'] . '</td>';
-                    echo '<td>' . $fila['tratamiento'] . '</td>';
-                    echo '<td>' . $fila['observacion'] . '</td>';
-                    echo '<td>' . $fila['pago'] . '</td>';
-                    echo '<td>' . ($fila['asistio'] == 'option1' ? 'No' : 'Si') . '</td>';
-                    echo '</tr>';*/
-
                     echo '<tr>';
-                    echo '<td>' . $row['pacienteId'] . '</td>';
                     echo '<td><img src="/agenda/uploads/' . $row['foto'] . '" alt="Foto Paciente" width="100"></td>';
-                    echo '<td>' . $row['evento'] . '</td>';
+                    echo '<td>' . $row['pacienteId'] . '</td>';
                     echo '<td>' . $row['fecha_prox'] . '</td>';
                     echo '<td>' . $row['fecha_pago'] . '</td>';
                     echo '<td>' . $row['tratamiento'] . '</td>';
@@ -106,6 +92,7 @@
                     echo '<td>' . ($row['asistio'] == 'No' ? 'No' : 'Si') . '</td>';
                     echo '</tr>';
                 }
+
                 echo '</tbody></table>';
             } else {
                 echo "No se encontraron eventos en la base de datos.";
@@ -128,5 +115,7 @@ $(document).ready(function() {
         }
     });*/
     new DataTable('#tablaEventos');
+
 });
 </script>
+

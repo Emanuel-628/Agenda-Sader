@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `practicas`
+-- Base de datos: `sader`
 --
 
 -- --------------------------------------------------------
@@ -39,13 +39,13 @@ CREATE TABLE `eventoscalendar` (
   `fecha_fin` varchar(20) DEFAULT NULL,
   `fecha_prox` varchar(20) DEFAULT NULL,
   `fecha_pago` varchar(20) DEFAULT NULL,  
-  `asistio` varchar(20) DEFAULT NULL,  
-  `foto` blob
+  `asistio` varchar(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE `Pacientes` (
   `id` int(11) NOT NULL,
-  `pacienteId` varchar(250) DEFAULT NULL
+  `pacienteId` varchar(250) DEFAULT NULL,
+  `foto` blob
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
