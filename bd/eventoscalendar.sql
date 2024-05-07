@@ -26,6 +26,8 @@ CREATE TABLE `eventoscalendar` (
   `fecha_prox` varchar(20) DEFAULT NULL,
   `fecha_pago` varchar(20) DEFAULT NULL,  
   `asistio` varchar(20) DEFAULT NULL,
+  `hora_inicio` varchar(20) DEFAULT NULL,
+  `hora_fin` varchar(20) DEFAULT NULL,  
    PRIMARY KEY (`id`),
    FOREIGN KEY (pacienteId) REFERENCES Pacientes(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

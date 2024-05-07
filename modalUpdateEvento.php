@@ -41,17 +41,17 @@
     <div class="form-group">
       <label for="hora_inicio" class="col-sm-12 control-label">Hora de Cita, desde:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" name="hora_inicio" id="hora_inicio" >
+        <input type="time" class="form-control" name="hora_inicio" id="hora_inicio" >
       </div>
     </div>
     <div class="form-group">
       <label for="hora_fin" class="col-sm-12 control-label">Hora de Cita, hasta: </label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" name="hora_fin" id="hora_fin" >
+        <input type="time" class="form-control" name="hora_fin" id="hora_fin" >
       </div>
     </div>
     <div class="form-group">
-			<label for="evento" class="col-sm-12 control-label">Pago</label>
+			<label for="pago" class="col-sm-12 control-label">Pago</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" name="pago" id="pago"/>
 			</div>
@@ -63,28 +63,29 @@
       </div>
     </div>
     <div class="form-group">
-			<label for="evento" class="col-sm-12 control-label">Tratamiento</label>
+			<label for="tratamiento" class="col-sm-12 control-label">Tratamiento</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" name="tratamiento" id="tratamiento"/>
 			</div>
 		</div>
     <div class="form-group">
-			<label for="evento" class="col-sm-12 control-label">¿Asistio?</label>
+			<label class="col-sm-12 control-label">¿Asistio?</label>
 			<div class="col-sm-12">
-      <div class="form-check">
-      <label class="form-check-label" for="radio1">
-        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="No" checked style="display: inline">No
-      </label>
+        <div class="form-check">
+          <label class="form-check-label" for="radio1">
+            <input type="radio" class="form-check-input" id="radio1" name="optradio" value="No" checked style="display: inline">No
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label" for="radio2">
+            <input type="radio" class="form-check-input" id="radio2" name="optradio" value="Si" style="display: inline">Si
+          </label>
+        </div>
+		  </div>
     </div>
-    <div class="form-check">
-      <label class="form-check-label" for="radio2">
-        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="Si" style="display: inline">Si
-      </label>
-    </div>
-		</div>
 
     <div class="form-group">
-			<label for="evento" class="col-sm-12 control-label">Observacion</label>
+			<label for="observacion" class="col-sm-12 control-label">Observacion</label>
 			<div class="col-sm-10">
 				<textarea class="form-control" name="observacion" id="observacion"></textarea>
 			</div>

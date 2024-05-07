@@ -45,7 +45,9 @@ $InsertNuevoEvento = "INSERT INTO eventoscalendar(
       tratamiento,
       observacion,
       color_evento,
-      asistio
+      asistio,
+      hora_inicio,
+      hora_fin
       )
     VALUES (
       '" .$evento. "',
@@ -58,7 +60,9 @@ $InsertNuevoEvento = "INSERT INTO eventoscalendar(
       '" .$tratamiento. "',
       '" .$observacion. "',
       '" .$color_evento. "',
-      '" .$asistio. "'
+      '" .$asistio. "',
+      '" .$hora_inicio. "',
+      '" .$hora_fin. "'
   )
   ON DUPLICATE KEY UPDATE 
       evento = VALUES(evento),
@@ -70,7 +74,10 @@ $InsertNuevoEvento = "INSERT INTO eventoscalendar(
       tratamiento = VALUES(tratamiento),
       observacion = VALUES(observacion),
       color_evento = VALUES(color_evento),
-      asistio = VALUES(asistio)";
+      asistio = VALUES(asistio),
+      hora_inicio = VALUES(hora_inicio),
+      hora_fin = VALUES(hora_fin)"
+      ;
 $resultadoNuevoEvento = mysqli_query($con, $InsertNuevoEvento);
 
 header("Location:index.php?e=1");
