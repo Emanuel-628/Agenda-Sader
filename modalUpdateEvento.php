@@ -122,3 +122,48 @@
     </div>
   </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#formEventoUpdate').submit(function(event) {
+alert('entroo');
+          // Obtener los valores de las fechas
+          var fechaInicioStr = $('#fecha_inicio').val();
+          var fechaProxStr = $('#fecha_prox').val();
+          var fechaPagoStr = $('#fecha_pago').val();
+
+          // Separar la fecha en día, mes y año
+          var partes_fecha = fechaInicioStr.split("-");
+          var dia = partes_fecha[0];
+          var mes = partes_fecha[1];
+          var año = partes_fecha[2];
+
+          // Crear una nueva fecha en formato yyyy-mm-dd
+          var fechaInicio2 = año + "-" + mes + "-" + dia;
+            
+          // Convertir las fechas a objetos Date
+          var fechaInicio = new Date(fechaInicio2);
+          var fechaProx = new Date(fechaProxStr);
+          var fechaPago = new Date(fechaPagoStr);
+
+          console.log(fechaInicio);
+          console.log(fechaProx);
+          console.log(fechaPago);
+          
+          // Verificar si las fechas son válidas
+          if (isNaN(fechaInicio.getTime()) || isNaN(fechaProx.getTime()) || isNaN(fechaPago.getTime())) {
+            alert('Una o más fechas son inválidas.');
+            event.preventDefault();
+            return;
+          }
+
+          // Comparar las fechas
+          if (fechaInicio >= fechaProx || fechaInicio >= fechaPago) {
+            alert('La fecha de inicio debe ser menor que la fecha de próxima cita y la fecha de próximo pago.');
+            event.preventDefault();
+          }
+        });
+    });
+</script>

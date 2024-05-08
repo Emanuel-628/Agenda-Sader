@@ -159,7 +159,7 @@ eventClick:function(event){
 
     var idEvento = event._id;
    
-    console.log(event);
+    //console.log(event);
     $('input[name=idEvento]').val(idEvento);
     $('input[name=fecha_inicio]').val(event.start.format('DD-MM-YYYY'));
     $('input[name=fecha_prox]').val(event.fecha_prox);
