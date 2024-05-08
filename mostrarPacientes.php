@@ -76,7 +76,8 @@
                 <th>N°</th>
                 <th>Foto</th>
                 <th>Paciente</th>
-                <th>Acciones</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
                 </tr></thead>';
                 echo '<tbody>';
                 while ($row = mysqli_fetch_assoc($result)) {   
@@ -84,6 +85,7 @@
                     echo '<td>' . $contador . '</td>';
                     echo '<td style="text-align: center;"><img src="/agenda/uploads/' . $row['foto'] . '" alt="Foto Paciente" width="100"></td>';
                     echo '<td style="text-align: center;">' . $row['paciente'] . '</td>';
+                    echo '<td><button type="button" class="btn btn-warning" onclick="editarPaciente(' . $row['id'] . ')">Editar</button></td>'; // Botón de editar
                     echo '<td><button type="button" class="btn btn-danger" onclick="eliminarPaciente(' . $row['id'] . ')">Eliminar</button></td>'; // Botón de eliminar
                     echo '</tr>';
                     $contador++;
@@ -123,5 +125,12 @@ $(document).ready(function() {
             // Aquí puedes usar AJAX o simplemente redirigir a una página de PHP que maneje la eliminación
             window.location.href = "eliminarPaciente.php?id=" + id;
         }
+    }
+</script>
+
+<script>
+    function editarPaciente(id) {
+        // Redirigir a la página de edición con el ID del paciente
+        window.location.href = "editarPaciente.php?id=" + id;
     }
 </script>
