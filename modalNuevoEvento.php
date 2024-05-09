@@ -1,4 +1,4 @@
-<div class="modal" id="exampleModal"  tabindex="-1" role="dialog">
+<div class="modal" id="exampleModal"   role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -34,19 +34,19 @@
     <div class="form-group">
       <label for="fecha_prox" class="col-sm-12 control-label">Fecha de Proxima Cita</label>
       <div class="col-sm-10">
-        <input type="date" class="form-control" name="fecha_prox" id="fecha_prox" placeholder="Fecha Final">
+        <input type="date" class="form-control" name="fecha_prox" id="fecha_prox">
       </div>
     </div>
     <div class="form-group">
       <label for="hora_inicio" class="col-sm-12 control-label">Hora de Cita, desde:</label>
       <div class="col-sm-10">
-        <input type="time" class="form-control" name="hora_inicio" id="hora_inicio" >
+        <input type="time" class="form-control" name="hora_inicio" id="hora_inicio">
       </div>
     </div>
     <div class="form-group">
       <label for="hora_fin" class="col-sm-12 control-label">Hora de Cita, hasta: </label>
       <div class="col-sm-10">
-        <input type="time" class="form-control" name="hora_fin" id="hora_fin" >
+        <input type="time" class="form-control" name="hora_fin" id="hora_fin">
       </div>
     </div>
     <div class="form-group">
@@ -117,7 +117,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
     	</div>
 	</form>
-      
+
     </div>
   </div>
 </div>
@@ -159,5 +159,22 @@
             event.preventDefault();
           }
         });
+    });
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#formEvento').submit(function(event) {
+
+    var horaInicio = document.getElementById("hora_inicio").value;
+    var horaFin = document.getElementById("hora_fin").value;
+    console.log(horaInicio);
+    console.log(horaFin);
+    if (horaInicio >= horaFin) {
+        alert("La hora de fin debe ser posterior a la hora de inicio.");
+        event.preventDefault();
+    }
+
+  });
     });
 </script>

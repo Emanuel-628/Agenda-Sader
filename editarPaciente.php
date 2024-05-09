@@ -63,7 +63,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])) {
                 </div>
                 <div class = "mb-3">
                     <label for = "foto">  Foto </label>
-                    <input type ="file" class="form-control-file" name="foto" id ="foto" value="<?php echo $paciente['foto']; ?>">
+                    <input type ="file" class="form-control-file" name="foto" id ="foto">
                 </div>
                 <button type="submit" class="btn btn-primary">Actualizar</button>
             </form>

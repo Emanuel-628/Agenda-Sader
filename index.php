@@ -13,6 +13,7 @@
 
   <link rel="icon" type="image/jpg" href="/agenda/sader.jpg">
 
+
 </head>
 <body>
 
@@ -90,6 +91,7 @@ $(document).ready(function() {
 //Nuevo Evento
   select: function(start, end){
       $("#exampleModal").modal();
+
       $("input[name=fecha_inicio]").val(start.format('DD-MM-YYYY'));
       
       var horaInicio = start.format('HH:mm');
@@ -169,6 +171,7 @@ eventClick:function(event){
     $('textarea[name=observacion]').val(event.observacion);
 
     $("#modalUpdateEvento").modal();
+    //$('#pacienteId').select2();
 
   },
 
